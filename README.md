@@ -5,7 +5,7 @@
 > [!WARNING]
 > 本项目主要由 AI 辅助构建，尚未经过完整的代码、安全、兼容性或性能审计。请把它视为研究原型和实现参考，不要未经审查直接用于生产环境。请只处理你有权使用和传播的内容，并遵守当地法律及第三方平台规则。
 
-[English](#english) · [部署文档](docs/DEPLOYMENT.md) · [安全策略](SECURITY.md) · [参与贡献](CONTRIBUTING.md)
+[English](#english) · [官网](https://123qewafdfg.github.io/pixel-vault/) ([原站](https://env-00jy6xru2hon-static.normal.cloudstatic.cn/)) · [部署文档](docs/DEPLOYMENT.md) · [安全策略](SECURITY.md) · [参与贡献](CONTRIBUTING.md)
 
 ## 工作原理
 
@@ -104,6 +104,12 @@ android/app/build/outputs/apk/full/release/app-full-release.apk
 - Windows、iOS 和完整浏览器版本尚未作为正式发行目标
 - 没有完成设备矩阵测试，不保证所有设备兼容
 
+## 官方网站
+
+- GitHub Pages 镜像：https://123qewafdfg.github.io/pixel-vault/
+- 原始官方下载页：https://env-00jy6xru2hon-static.normal.cloudstatic.cn/
+- 站点文件位于 [`site/`](site/)，通过 `gh-pages` 分支发布，除资源路径改为相对路径外与官方站一致
+
 ## 许可证
 
 本仓库作为组合项目依据 [GNU AGPL-3.0](LICENSE) 发布，允许商业使用、复制、修改和分发，但必须遵守 AGPL-3.0 的源码公开和许可证保留要求。
@@ -156,6 +162,12 @@ Without `apiBaseUrl`, the app uses the non-routable placeholder `https://example
 The first public APK is signed with an Android debug certificate. It is suitable for installation, testing, and reproducible review, but it is not a long-term production signing identity. A future signing-key change may require uninstalling the old build before installation.
 
 To avoid publishing third-party captured credentials, the public build leaves Xunlei client IDs and secrets empty, so that integration is unavailable by default. Users may supply their own authorized values through local Gradle properties.
+
+### Official site
+
+- GitHub Pages mirror: https://123qewafdfg.github.io/pixel-vault/
+- Original download page: https://env-00jy6xru2hon-static.normal.cloudstatic.cn/
+- The site files live in [`site/`](site/) and are published from the `gh-pages` branch; apart from asset paths being rewritten to relative ones, it matches the official page.
 
 ### License
 
