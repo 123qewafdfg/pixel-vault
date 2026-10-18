@@ -1,0 +1,23 @@
+{
+  "prefix": "trustmark-updates",
+  "urlExpiresSeconds": 3600,
+  "builtin": {
+    "enabled": true
+  },
+  "cos": {
+    "enabled": false,
+    "secretId": "replace-me",
+    "secretKey": "replace-me",
+    "bucket": "bucket-name-appid",
+    "region": "ap-guangzhou"
+  },
+  "oss": {
+    "enabled": false,
+    "accessKeyId": "replace-me",
+    "accessKeySecret": "replace-me",
+    "bucket": "bucket-name",
+    "region": "oss-cn-hangzhou",
+    "authorizationV4": true
+  },
+  "adminSecret": "replace-with-at-least-32-random-bytes"
+}

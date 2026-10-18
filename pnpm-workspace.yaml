@@ -1,0 +1,9 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+allowBuilds:
+  protobufjs: true
+
+minimumReleaseAgeExclude:
+  - '@fastify/rate-limit@11.2.1'

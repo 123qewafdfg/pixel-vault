@@ -1,0 +1,7 @@
+{
+  "prefix": "trustmark-updates",
+  "urlExpiresSeconds": 3600,
+  "builtin": {
+    "enabled": true
+  }
+}

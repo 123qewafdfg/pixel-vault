@@ -1,0 +1,29 @@
+{
+  "name": "trustmark-registry-api",
+  "version": "2.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "node --test test/*.test.js"
+  },
+  "engines": {
+    "node": "18"
+  },
+  "dependencies": {},
+  "extensions": {
+    "uni-cloud-jql": {}
+  },
+  "cloudfunction-config": {
+    "concurrency": 5,
+    "memorySize": 512,
+    "timeout": 600,
+    "path": "/share",
+    "runtime": "Nodejs18",
+    "triggers": [
+      {
+        "name": "shareCleanupHourly",
+        "type": "timer",
+        "config": "0 17 * * * * *"
+      }
+    ]
+  }
+}

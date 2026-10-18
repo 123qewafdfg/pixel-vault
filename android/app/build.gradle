@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+apply plugin: 'org.jetbrains.kotlin.android'
+apply plugin: 'org.jetbrains.kotlin.plugin.compose'
+
+def configuredApiBaseUrl = project.findProperty('apiBaseUrl')?.toString()
+def resolvedApiBaseUrl = configuredApiBaseUrl ?: 'https://example.invalid'
+
+android {
+    namespace = 'com.trustmark.share'
+    compileSdk = rootProject.ext.compileSdkVersion
+
+    defaultConfig {
+        applicationId 'com.trustmark.share'
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 16
+        versionName '3.3-native'
+        testInstrumentationRunner 'androidx.test.runner.AndroidJUnitRunner'
+        buildConfigField 'String', 'API_BASE_URL', '"' + resolvedApiBaseUrl + '"'
+        buildConfigField 'boolean', 'EXTRACT_ONLY', 'false'
+        buildConfigField 'String', 'UPDATE_CHANNEL', '"main"'
+        manifestPlaceholders = [allowCleartext: configuredApiBaseUrl != null ? 'true' : 'false']
+        ndk { abiFilters 'arm64-v8a' }
+        externalNativeBuild { cmake { cppFlags '-std=c++17', '-O3' } }
+    }
+
+    flavorDimensions += 'edition'
+    productFlavors {
+        full {
+            dimension 'edition'
+        }
+        trace {
+            dimension 'edition'
+            applicationId 'com.trustmark.extractlite'
+            versionCode 1
+            versionName '1.0'
+            buildConfigField 'boolean', 'EXTRACT_ONLY', 'true'
+            buildConfigField 'String', 'UPDATE_CHANNEL', '"extract"'
+        }
+    }
+
+    ndkVersion '30.0.16248370'
+    externalNativeBuild {
+        cmake {
+            path file('src/main/cpp/CMakeLists.txt')
+            version '4.1.2'
+        }
+    }
+    androidResources { noCompress += ['onnx'] }
+    buildFeatures { compose true; buildConfig true }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions { jvmTarget = '17' }
+    sourceSets.main.assets.srcDirs = ['src/main/nativeAssets']
+    sourceSets.full.assets.srcDirs = ['src/full/nativeAssets']
+    buildTypes {
+        release {
+            minifyEnabled true
+            shrinkResources true
+            signingConfig signingConfigs.debug
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.google.zxing:core:3.5.3'
+    testImplementation 'com.squareup.okhttp3:mockwebserver:4.12.0'
+    implementation project(':cloud-drive')
+    testImplementation 'junit:junit:4.13.2'
+    testImplementation 'org.json:json:20240303'
+    androidTestImplementation 'androidx.test.ext:junit:1.2.1'
+    androidTestImplementation 'androidx.test:runner:1.6.2'
+    implementation platform('androidx.compose:compose-bom:2025.06.01')
+    implementation 'androidx.compose.ui:ui'
+    implementation 'androidx.compose.ui:ui-tooling-preview'
+    implementation 'androidx.compose.material3:material3'
+    implementation 'androidx.compose.material:material-icons-core'
+    implementation 'androidx.compose.material:material-icons-extended'
+    implementation 'androidx.activity:activity-compose:1.10.1'
+    implementation 'androidx.core:core-ktx:1.16.0'
+    implementation 'androidx.lifecycle:lifecycle-runtime-ktx:2.9.1'
+    implementation 'io.coil-kt.coil3:coil-compose:3.2.0'
+    implementation 'io.coil-kt.coil3:coil-gif:3.2.0'
+    implementation 'io.coil-kt.coil3:coil-video:3.2.0'
+    implementation 'androidx.media3:media3-exoplayer:1.11.1'
+    implementation 'androidx.media3:media3-ui:1.11.1'
+    fullImplementation 'androidx.media3:media3-transformer:1.11.1'
+    debugImplementation 'androidx.compose.ui:ui-tooling'
+}

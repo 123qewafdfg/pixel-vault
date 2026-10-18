@@ -1,0 +1,14 @@
+{
+  "versionCode": 9,
+  "versionName": "2.7-native",
+  "notes": "填写本次更新内容",
+  "force": false,
+  "fullApk": "C:/path/to/app-release.apk",
+  "patches": [
+    {
+      "fromVersionCode": 8,
+      "file": "C:/path/to/v8-to-v9.tmdelta.gz",
+      "baseApkSha256": "填写实际发布的v8 APK SHA-256"
+    }
+  ]
+}

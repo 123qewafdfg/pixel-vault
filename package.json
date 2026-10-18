@@ -1,0 +1,24 @@
+{
+  "name": "trustmark-share",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "packageManager": "pnpm@11.5.1",
+  "scripts": {
+    "dev:web": "pnpm --filter @trustmark-share/web dev",
+    "dev:server": "pnpm --filter @trustmark-share/server dev",
+    "build": "pnpm --filter @trustmark-share/protocol build && pnpm --filter @trustmark-share/crypto build && pnpm --filter @trustmark-share/trustmark build && pnpm --filter @trustmark-share/server build && pnpm --filter @trustmark-share/web build",
+    "lint": "pnpm --filter @trustmark-share/web lint",
+    "preview:web": "pnpm --filter @trustmark-share/web preview",
+    "android:sync": "pnpm build && cap sync android",
+    "android:debug": "pnpm android:sync && cd android && gradlew.bat assembleDebug",
+    "test": "pnpm --filter @trustmark-share/protocol test && pnpm --filter @trustmark-share/crypto test && pnpm --filter @trustmark-share/trustmark test && pnpm --filter @trustmark-share/server test"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.0.0"
+  },
+  "dependencies": {
+    "@capacitor/android": "8.0.0",
+    "@capacitor/core": "8.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+Yinxiang / 隐像
+Copyright (C) 2026 123qewafdfg
+
+This combined project is distributed under GNU AGPL-3.0.
+
+Third-party components include, but are not limited to:
+
+1. YunX-derived Android cloud-drive subset
+   Upstream revision and scope are documented in android/cloud-drive/UPSTREAM.md.
+   License: GNU AGPL-3.0. The complete license is retained in
+   android/cloud-drive/LICENSE.
+
+2. Adobe TrustMark-derived BCH ECC implementation
+   Attribution and source information are documented in
+   packages/trustmark/THIRD_PARTY_NOTICES.md.
+   License: MIT.
+
+3. ONNX Runtime and other package-manager dependencies
+   These components retain their own copyright and license terms.
+   Review the dependency lockfiles and bundled license notices before
+   redistributing modified binaries.

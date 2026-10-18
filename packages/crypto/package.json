@@ -1,0 +1,19 @@
+{
+  "name": "@trustmark-share/crypto",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "exports": "./src/index.ts",
+  "scripts": {
+    "build": "tsc --noEmit",
+    "test": "node --test test/*.test.ts"
+  },
+  "dependencies": {
+    "@noble/hashes": "^2.4.0",
+    "@trustmark-share/protocol": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^24.10.0",
+    "typescript": "~6.0.2"
+  }
+}
